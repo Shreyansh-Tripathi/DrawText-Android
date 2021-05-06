@@ -2,15 +2,13 @@ package com.shreyansh.drawtext;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.util.SparseArray;
-import android.view.MotionEvent;
+
 import android.view.View;
+
 import android.widget.Button;
 
 import android.widget.EditText;
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         drawableView = findViewById(R.id.drawableView);
         textButton=findViewById(R.id.textButton);
-        textButton.setVisibility(View.GONE);
 
         DrawableViewConfig config = new DrawableViewConfig();
         config.setCanvasHeight(2200);
@@ -77,13 +74,10 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                                                       LinearLayout.LayoutParams.MATCH_PARENT);
             editText.setLayoutParams(params);
+            editText.setText(text);
             dialog.setView(editText);
-            dialog.setPositiveButton("Clear", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                     drawableView.clear();
-                }
-            });
+            dialog.setCancelable(false);
+            dialog.setPositiveButton("Clear", (dialog1, which) -> drawableView.clear());
             dialog.show();
         }
     }
