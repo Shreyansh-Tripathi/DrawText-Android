@@ -21,7 +21,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import me.panavtec.drawableview.DrawableView;
 import me.panavtec.drawableview.DrawableViewConfig;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     DrawableView drawableView;
     Button textButton;
@@ -32,40 +32,20 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         drawableView = findViewById(R.id.drawableView);
         textButton=findViewById(R.id.textButton);
-
-        //textButton.setVisibility(View.GONE);
+        textButton.setVisibility(View.GONE);
 
         DrawableViewConfig config = new DrawableViewConfig();
         config.setCanvasHeight(2200);
         config.setCanvasWidth(1920);
-        config.setShowCanvasBounds(true);
+        config.setShowCanvasBounds(false);
         config.setStrokeColor(Color.RED);
         config.setStrokeWidth(15f);
         config.setMaxZoom(5f);
         config.setMinZoom(1f);
         drawableView.setConfig(config);
+
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction())
-        {
-            case MotionEvent.ACTION_DOWN:
-                textButton.setVisibility(View.GONE);
-                return true;
-
-            case MotionEvent.ACTION_MOVE:
-                textButton.setVisibility(View.GONE);
-                break;
-
-            case MotionEvent.ACTION_UP:
-                textButton.setVisibility(View.INVISIBLE);
-                break;
-            default:
-                return false;
-        }
-        return true;
-    }
 
     public void showText(View view) {
         getText(drawableView.obtainBitmap());
