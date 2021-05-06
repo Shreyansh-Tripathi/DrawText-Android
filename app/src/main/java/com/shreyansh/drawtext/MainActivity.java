@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0;i<str.size();i++){
                 TextBlock textBlock=str.valueAt(i);
                 text.append(textBlock.getValue());
-                text.append("\n");
             }
             AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
             dialog.setTitle("Text");
