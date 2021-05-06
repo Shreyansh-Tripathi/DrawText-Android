@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity{
         drawableView = findViewById(R.id.drawableView);
         textButton=findViewById(R.id.textButton);
 
+        //textButton.setVisibility(View.GONE);
+
         DrawableViewConfig config = new DrawableViewConfig();
         config.setCanvasHeight(2200);
         config.setCanvasWidth(1920);
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity{
                 break;
 
             case MotionEvent.ACTION_UP:
-                textButton.setVisibility(View.VISIBLE);
+                textButton.setVisibility(View.INVISIBLE);
                 break;
             default:
                 return false;
