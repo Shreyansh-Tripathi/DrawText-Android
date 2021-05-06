@@ -2,14 +2,15 @@ package com.shreyansh.drawtext;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.SparseArray;
 
-import android.view.View;
 
-import android.widget.Button;
+import android.view.View;
 
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -26,14 +27,14 @@ import me.panavtec.drawableview.DrawableViewConfig;
 public class MainActivity extends AppCompatActivity {
 
     DrawableView drawableView;
-    Button textButton;
+    //Button textButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawableView = findViewById(R.id.drawableView);
-        textButton=findViewById(R.id.textButton);
+       // textButton=findViewById(R.id.textButton);
 
         DrawableViewConfig config = new DrawableViewConfig();
         config.setCanvasHeight(2200);
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         config.setMaxZoom(5f);
         config.setMinZoom(1f);
         drawableView.setConfig(config);
+
 
     }
 
