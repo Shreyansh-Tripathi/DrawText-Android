@@ -1,7 +1,9 @@
 package com.shreyansh.drawtext;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.Frame;
@@ -46,10 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void showText(View view) {
         getText(drawableView.obtainBitmap());
-        drawableView.clear();
     }
 
     public void getText(Bitmap bitmap){
@@ -69,8 +71,20 @@ public class MainActivity extends AppCompatActivity {
                 text.append(textBlock.getValue());
                 text.append("\n");
             }
-
-            Toast.makeText(this, text.toString(), Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
+            dialog.setTitle("Text");
+            final EditText editText=new EditText(MainActivity.this);
+            LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                                                      LinearLayout.LayoutParams.MATCH_PARENT);
+            editText.setLayoutParams(params);
+            dialog.setView(editText);
+            dialog.setPositiveButton("Clear", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                     drawableView.clear();
+                }
+            });
+            dialog.show();
         }
     }
 
